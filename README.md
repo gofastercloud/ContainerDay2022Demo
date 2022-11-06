@@ -6,4 +6,4 @@ To create the demo cluster;
 $ eksctl create cluster -f eksctl-cluster.yaml
 ```
 
-See the commands.md file in each subfolder for demo instructions
+See the README.md file in each subfolder for demo instructions
