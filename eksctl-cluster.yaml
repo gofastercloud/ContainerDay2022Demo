@@ -1,0 +1,39 @@
+---
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: container-day-demo
+  region: ap-southeast-2
+  version: '1.23'
+
+managedNodeGroups:
+  - name: workers
+    amiFamily: Bottlerocket
+    bottlerocket:
+      enableAdminContainer: true
+      settings:
+        motd: 'Hello, eksctl!'
+    volumeSize: 150
+
+    disableIMDSv1: true
+
+    labels: { role: workers }
+    tags:
+      nodegroup-role: worker
+
+    instanceType: t4g.small
+    desiredCapacity: 2
+
+    iam:
+      withAddonPolicies:
+        externalDNS: true
+        certManager: true
+
+iam:
+  withOIDC: true
+
+cloudWatch:
+  clusterLogging:
+    enableTypes:
+      ['audit', 'authenticator', 'scheduler', 'api', 'controllerManager']

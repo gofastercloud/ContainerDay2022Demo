@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: psa-demo-pod-unpriv-cgr
+spec:
+  securityContext:
+    runAsUser: 1000
+  containers:
+    - name: psa-demo-pod
+      image: cgr.dev/chainguard/nginx:latest
+      resources:
+        requests:
+          cpu: '0.5'
+          memory: '256Mi'
+        limits:
+          cpu: '1'
+          memory: '512Mi'
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
+        privileged: false
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true
+        capabilities:
+          drop: ['ALL']
