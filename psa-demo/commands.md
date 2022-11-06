@@ -1,3 +1,4 @@
+```bash
 kubectl apply -f priv-ns.yaml
 
 kubectl apply -f rest-ns.yaml
@@ -21,3 +22,4 @@ kubectl logs psa-demo-pod-unpriv
 kubectl apply -f unpriv-pod-cgr.yaml
 
 kubectl get pods
+```
