@@ -5,4 +5,5 @@ metadata:
   name: rest-ns
   labels:
     pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/enforce-version: v1.23
     type: demo

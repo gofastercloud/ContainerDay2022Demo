@@ -5,4 +5,5 @@ metadata:
   name: priv-ns
   labels:
     pod-security.kubernetes.io/enforce: privileged
+    pod-security.kubernetes.io/enforce-version: v1.23
     type: demo
